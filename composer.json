@@ -1,0 +1,17 @@
+{
+    "name": "balloonmkt/hospedagem",
+    "authors": [
+        {
+            "name": "Alef Mendes",
+            "email": "alef_rmendes@hotmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Balloonmkt\\": "vendor\\balloonmkt\\php-classes\\src"
+        }
+    }
+}
