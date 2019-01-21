@@ -1,6 +1,6 @@
 <?php
 
-namespace DB;
+namespace Balloonmkt\DB;
 
 class Sql{
   const HOSTNAME = "127.0.0.1";
@@ -11,12 +11,12 @@ class Sql{
   private $conn;
 
   public function __construct(){
-    $this->conn = new PDO("mysql:dbname=".Sql::DBNAME.";host=".Sql::HOSTNAME,Sql::USERNAME,Sql::PASSWORD);
+    $this->conn = new \PDO("mysql:dbname=".Sql::DBNAME.";host=".Sql::HOSTNAME,Sql::USERNAME,Sql::PASSWORD);
   }
 
   private function bindParam($statement, $key, $value){
     $statement->bindParam($key, $value);
-  }
+    }
 
   private function setParams($statement, $parameters = array()){
     foreach ($parameters as $key => $value){
