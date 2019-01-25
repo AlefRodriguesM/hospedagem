@@ -1,0 +1,4 @@
+cd C:\xampp\htdocs\hospedagem
+
+composer update
+
