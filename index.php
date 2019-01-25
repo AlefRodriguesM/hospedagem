@@ -2,18 +2,18 @@
 
 require_once("vendor/autoload.php");
 
+use \Slim\Slim;
 use \Balloonmkt\DB\Sql;
 use \Balloonmkt\Page;
-/*
-$sql = new Sql();
 
-$resultado = $sql->select("SELECT * FROM TB_TESTE");
+$app = new Slim();
 
-echo json_encode($resultado);
-*/
+$app->config('debug', true);
 
-$page = new Page();
+$app->get('/', function(){
+  $page = new Page();
 
-$page->setTpl("index");
+  $page->setTpl("index");
+});
 
 ?>
