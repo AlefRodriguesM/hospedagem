@@ -6,14 +6,16 @@ use \Slim\Slim;
 use \Balloonmkt\DB\Sql;
 use \Balloonmkt\Page;
 
+$get = function($nomeArquivo){
+  $page = new Page();
+
+  $page->setTpl($nomeArquivo);
+};
+
 $app = new Slim();
 
 $app->config('debug', true);
 
-$app->get('/', function(){
-  $page = new Page();
-
-  $page->setTpl("index");
-});
+$app->get('/', $get('index'));
 
 ?>

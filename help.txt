@@ -1,0 +1,25 @@
+### DB ###
+CREATE DATABASE db_hospedagem
+
+### SO ###
+Va até "C:\Windows\System32\drivers\etc\hosts"
+Edite e adicione "127.0.0.1		www.hospedagem.com.br"
+
+Va até "C:\xampp\apache\conf\extra"
+Edite e adicione
+<VirtualHost *:80>
+    ServerAdmin webmaster@hospedagem.com.br
+    DocumentRoot "C:/xampp/htdocs/hospedagem"
+    ServerName www.hospedagem.com.br
+    ErrorLog "logs/dummy-host2.example.com-error.log"
+    CustomLog "logs/dummy-host2.example.com-access.log" common
+	<Directory "C:/xampp/htdocs/hospedagem">
+        Require all granted
+
+        RewriteEngine On
+
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^ index.php [QSA,L]
+	</Directory>
+</VirtualHost>
