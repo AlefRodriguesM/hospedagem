@@ -5,7 +5,7 @@ CREATE DATABASE db_hospedagem
 Va até "C:\Windows\System32\drivers\etc\hosts"
 Edite e adicione "127.0.0.1		www.hospedagem.com.br"
 
-Va até "C:\xampp\apache\conf\extra"
+Va até "C:\xampp\apache\conf\extra\httpd-vhosts"
 Edite e adicione
 <VirtualHost *:80>
     ServerAdmin webmaster@hospedagem.com.br
