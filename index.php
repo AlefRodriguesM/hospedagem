@@ -62,7 +62,7 @@ $app->get('/admin/users', function(){
   $page->setTpl('users', array('users'=>$users));
 });
 
-$app->get('/admin/create', function(){
+$app->get('/admin/users/create', function(){
   User::verifyLogin();
 
   $page = new PageAdmin();
@@ -99,8 +99,6 @@ $app->get('/admin/users/:PK_ID', function($PK_ID){
 $app->post('/admin/users/create', function(){
   User::verifyLogin();
 
-  //var_dump($_POST);
-
   $user = new User();
 
   $_POST["TG_ADMIN"] = (isset($_POST["TG_ADMIN"]))?1:0;
@@ -129,7 +127,7 @@ $app->post('/admin/users/:PK_ID', function($PK_ID){
 
   $user->update();
 
-  header('Location: /admin/user');
+  header('Location: /admin/users');
 
   exit;
 });

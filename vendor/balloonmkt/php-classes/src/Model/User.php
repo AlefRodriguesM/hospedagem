@@ -8,6 +8,10 @@ use \Balloonmkt\DB\Sql;
 class User extends Model{
   const SESSION = "User";
 
+  //protected $fields = [
+  //		"PK_ID", "DS_LOGIN", "DS_PASSOWRD", "TG_ADMIN", "TG_INACTIVE", "DT_REGISTER"
+  //];
+
   public static function login($login, $password){
     $sql = new Sql();
 
@@ -58,7 +62,35 @@ class User extends Model{
   public function save(){
     $sql = new Sql();
 
-    $sql->select('');
+    $results = $sql->select("CALL sp_users_save(:DS_LOGIN, :DS_PASSWORD, :TG_ADMIN)", array(
+      ":DS_LOGIN"=>$this->getDS_LOGIN(),
+      ":DS_PASSWORD"=>$this->getDS_PASSWORD(),
+      ":TG_ADMIN"=>$this->getTG_ADMIN()
+    ));
+
+    $this->setData($results[0]);
+  }
+
+  public function get($PK_ID){
+    $sql = new Sql();
+
+    $results = $sql->select("SELECT * FROM tb_users WHERE PK_ID = :PK_ID", array(
+        ":PK_ID"=>$PK_ID
+    ));
+
+    $this->setData($results[0]);
+  }
+
+  public function update(){
+    $sql = new Sql();
+
+    $results = $sql->select("CALL sp_users_save(:DS_LOGIN, :DS_PASSWORD, :TG_ADMIN)", array(
+      ":DS_LOGIN"=>$this->getDS_LOGIN(),
+      ":DS_PASSWORD"=>$this->getDS_PASSWORD(),
+      ":TG_ADMIN"=>$this->getTG_ADMIN()
+    ));
+
+    $this->setData($results[0]);
   }
 }
 
