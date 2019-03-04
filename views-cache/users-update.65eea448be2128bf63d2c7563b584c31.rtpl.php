@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Users list
+    Lista de usuários
   </h1>
 </section>
 
@@ -14,25 +14,25 @@
   	<div class="col-md-12">
   		<div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Edit users</h3>
+          <h3 class="box-title">Editar usuários</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
         <form role="form" action="/admin/users/<?php echo htmlspecialchars( $user["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
           <div class="box-body">
             <div class="form-group">
-              <label for="DS_LOGIN">Login</label>
-              <input type="text" class="form-control" id="DS_LOGIN" name="DS_LOGIN" placeholder="Login.."  value="<?php echo htmlspecialchars( $user["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              <label for="DS_LOGIN">Usuário</label>
+              <input type="text" class="form-control" id="DS_LOGIN" name="DS_LOGIN" placeholder="Usuário.."  value="<?php echo htmlspecialchars( $user["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="TG_ADMIN" value="1" <?php if( $user["TG_ADMIN"] == 1 ){ ?>checked<?php } ?>> Administrator access
+                <input type="checkbox" name="TG_ADMIN" value="1" <?php if( $user["TG_ADMIN"] == 1 ){ ?>checked<?php } ?>> Acesso de administrador
               </label>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </form>
       </div>

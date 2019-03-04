@@ -3,10 +3,10 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de Usuários
+    Lista de usuários
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="/admin"><i class="fa fa-dashboard"></i>Início</a></li>
     <li class="active"><a href="/admin/users">Usuários</a></li>
   </ol>
 </section>
@@ -19,7 +19,7 @@
   		<div class="box box-primary">
 
             <div class="box-header">
-              <a href="/admin/users/create" class="btn btn-success">Cadastrar Usuário</a>
+              <a href="/admin/users/create" class="btn btn-success">Cadastrar usuário</a>
             </div>
 
             <div class="box-body no-padding">
@@ -27,10 +27,10 @@
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
-                    <th>Login</th>
-                    <th style="width: 60px">Admin</th>
-                    <th style="width: 60px">Inactive</th>
-                    <th>Dt. Register</th>
+                    <th>Usuário</th>
+                    <th style="width: 60px">Administrador</th>
+                    <th style="width: 60px">Inativo</th>
+                    <th>Dt. Cadastro</th>
                     <th style="width: 140px">&nbsp;</th>
                   </tr>
                 </thead>
@@ -39,12 +39,12 @@
                   <tr>
                     <td><?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                    <td><?php if( $value1["TG_ADMIN"] == 1 ){ ?>Yes<?php }else{ ?>No<?php } ?></td>
-                    <td><?php if( $value1["TG_INACTIVE"] == 1 ){ ?>Yes<?php }else{ ?>No<?php } ?></td>
+                    <td><?php if( $value1["TG_ADMIN"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>
+                    <td><?php if( $value1["TG_INACTIVE"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>
                     <td><?php echo htmlspecialchars( $value1["DT_REGISTER"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td>
-                      <a href="/admin/users/<?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                      <a href="/admin/users/<?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Do you really want to delete this record?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+                      <a href="/admin/users/<?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <a href="/admin/users/<?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Você tem certeza que deseja deletar este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Deletar</a>
                     </td>
                   </tr>
                   <?php } ?>

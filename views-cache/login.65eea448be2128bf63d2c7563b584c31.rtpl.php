@@ -27,7 +27,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/res/admin/index2.html"><b>Admin</b>LTE</a>
+    <img src="/res/logo.png">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

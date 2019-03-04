@@ -72,30 +72,66 @@ $app->get('/admin/create', function(){
 
 $app->get('/admin/users/:PK_ID/delete', function($PK_ID){
   User::verifyLogin();
+
+  $user = new User();
+
+  $user->get((int)$PK_ID);
+
+  $user->delete();
+
+  header('Location: /admin/users');
+
+  exit;
 });
 
 $app->get('/admin/users/:PK_ID', function($PK_ID){
   User::verifyLogin();
 
+  $user = new User();
+
+  $user->get((int)$PK_ID);
+
   $page = new PageAdmin();
 
-  $page->setTpl('users-update');
+  $page->setTpl('users-update', array("user"=>$user->getValues()));
 });
 
 $app->post('/admin/users/create', function(){
   User::verifyLogin();
 
-  var_dump($_POST);
+  //var_dump($_POST);
 
   $user = new User();
 
+  $_POST["TG_ADMIN"] = (isset($_POST["TG_ADMIN"]))?1:0;
+
+  $_POST['DS_PASSWORD'] = password_hash($_POST["DS_PASSWORD"], PASSWORD_DEFAULT, [
+ 		"cost"=>12
+ 	]);
+
   $user->setData($_POST);
 
-  var_dump($user);
+  $user->save();
+
+  header('Location: /admin/users');
+
+  exit;
 });
 
 $app->post('/admin/users/:PK_ID', function($PK_ID){
   User::verifyLogin();
+
+  $user = new User();
+
+  $_POST["TG_ADMIN"] = (isset($_POST["TG_ADMIN"]))?1:0;
+
+  $user->get((int)$PK_ID);
+
+  $user->update();
+
+  header('Location: /admin/user');
+
+  exit;
 });
 
 $app->run();
