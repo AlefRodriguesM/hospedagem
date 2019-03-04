@@ -84,9 +84,9 @@ class User extends Model{
   public function update(){
     $sql = new Sql();
 
-    $results = $sql->select("CALL sp_users_save(:DS_LOGIN, :DS_PASSWORD, :TG_ADMIN)", array(
+    $results = $sql->select("CALL sp_usersupdate_save(:PK_ID, :DS_LOGIN, :TG_ADMIN)", array(
+      ":PK_ID"=>$this->getPK_ID(),
       ":DS_LOGIN"=>$this->getDS_LOGIN(),
-      ":DS_PASSWORD"=>$this->getDS_PASSWORD(),
       ":TG_ADMIN"=>$this->getTG_ADMIN()
     ));
 
