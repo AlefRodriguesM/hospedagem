@@ -28,6 +28,7 @@
                   <tr>
                     <th style="width: 10px">#</th>
                     <th>Usuário</th>
+                    <th>E-Mail</th>
                     <th style="width: 60px">Administrador</th>
                     <th style="width: 60px">Inativo</th>
                     <th>Dt. Cadastro</th>
@@ -39,6 +40,7 @@
                   <tr>
                     <td><?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <td><?php echo htmlspecialchars( $value1["DS_EMAIL"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php if( $value1["TG_ADMIN"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>
                     <td><?php if( $value1["TG_INACTIVE"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>
                     <td><?php echo htmlspecialchars( $value1["DT_REGISTER"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>

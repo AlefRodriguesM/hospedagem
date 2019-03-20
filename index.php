@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("vendor/autoload.php");
+require_once('vendor/autoload.php');
 
 use \Slim\Slim;
 use \Balloonmkt\DB\Sql;
@@ -101,9 +101,9 @@ $app->post('/admin/users/create', function(){
 
   $user = new User();
 
-  $_POST["TG_ADMIN"] = (isset($_POST["TG_ADMIN"]))?1:0;
+  $_POST['TG_ADMIN'] = (isset($_POST['TG_ADMIN']))?1:0;
 
-  $_POST['DS_PASSWORD'] = password_hash($_POST["DS_PASSWORD"], PASSWORD_DEFAULT, [
+  $_POST['DS_PASSWORD'] = password_hash($_POST['DS_PASSWORD'], PASSWORD_DEFAULT, [
  		"cost"=>12
  	]);
 
@@ -121,15 +121,30 @@ $app->post('/admin/users/:PK_ID', function($PK_ID){
 
   $user = new User();
 
-  $_POST["TG_ADMIN"] = (isset($_POST["TG_ADMIN"]))?1:0;
+  $_POST['TG_ADMIN'] = (isset($_POST['TG_ADMIN']))?1:0;
 
   $user->get((int)$PK_ID);
+
+  $user->setData($_POST);
 
   $user->update();
 
   header('Location: /admin/users');
 
   exit;
+});
+
+$app->get('/admin/forgot', function(){
+  $page = new PageAdmin([
+    'header'=>false,
+    'footer'=>false
+  ]);
+
+  $page->setTpl('forgot');
+});
+
+$app->post('/admin/forgot', function(){
+  $user = User::getForgot($_POST['EMAIL']);
 });
 
 $app->run();

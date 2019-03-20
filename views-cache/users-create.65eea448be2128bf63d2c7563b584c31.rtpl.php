@@ -29,6 +29,10 @@
               <label for="DS_LOGIN">Usuário</label>
               <input type="text" class="form-control" id="DS_LOGIN" name="DS_LOGIN" placeholder="Usuário..">
             </div>
+              <div class="form-group">
+                <label for="DS_EMAIL">E-Mail</label>
+                <input type="text" class="form-control" id="DS_EMAIL" name="DS_EMAIL" placeholder="E-Mail..">
+              </div>
             <div class="form-group">
               <label for="DS_PASSWORD">Senha</label>
               <input type="password" class="form-control" id="DS_PASSWORD" name="DS_PASSWORD" placeholder="Senha..">

@@ -8,10 +8,6 @@ use \Balloonmkt\DB\Sql;
 class User extends Model{
   const SESSION = "User";
 
-  //protected $fields = [
-  //		"PK_ID", "DS_LOGIN", "DS_PASSOWRD", "TG_ADMIN", "TG_INACTIVE", "DT_REGISTER"
-  //];
-
   public static function login($login, $password){
     $sql = new Sql();
 
@@ -62,9 +58,10 @@ class User extends Model{
   public function save(){
     $sql = new Sql();
 
-    $results = $sql->select("CALL sp_users_save(:DS_LOGIN, :DS_PASSWORD, :TG_ADMIN)", array(
+    $results = $sql->select("CALL sp_users_save(:DS_LOGIN, :DS_PASSWORD, :DS_EMAIL, :TG_ADMIN)", array(
       ":DS_LOGIN"=>$this->getDS_LOGIN(),
       ":DS_PASSWORD"=>$this->getDS_PASSWORD(),
+      ":DS_EMAIL"=>$this->getDS_EMAIL(),
       ":TG_ADMIN"=>$this->getTG_ADMIN()
     ));
 
@@ -84,13 +81,51 @@ class User extends Model{
   public function update(){
     $sql = new Sql();
 
-    $results = $sql->select("CALL sp_usersupdate_save(:PK_ID, :DS_LOGIN, :TG_ADMIN)", array(
+    $results = $sql->select("CALL sp_usersupdate_save(:PK_ID, :DS_LOGIN, :DS_EMAIL, :TG_ADMIN)", array(
       ":PK_ID"=>$this->getPK_ID(),
       ":DS_LOGIN"=>$this->getDS_LOGIN(),
+      ":DS_EMAIL"=>$this->getDS_EMAIL(),
       ":TG_ADMIN"=>$this->getTG_ADMIN()
     ));
 
     $this->setData($results[0]);
+  }
+
+  public function delete(){
+    $sql = new sql();
+
+    $sql->executa("CALL sp_users_delete(:PK_ID)", array(
+      ":PK_ID"=>$this->getPK_ID()
+    ));
+  }
+
+  public static function getForgot($email){
+    $sql = new Sql();
+
+    $results = $sql->select("
+      SELECT
+        PK_ID
+      FROM tb_users
+      WHERE
+        DS_EMAIL = :EMAIL
+    ", array(
+        ":DS_EMAIL"=>$email
+    ));
+
+    if (count($results) === 0){
+      throw new \Exception("Não foi possível recuperar a senha.");
+    }else{
+      $results2 = $sql->select("CALL SP_USERSPASSRECORVER_CREATE(:PK_ID, :DS_IP)", array(
+        ":PK_ID"=>$data["PK_ID"],
+        ":DS_IP"=>$SERVER["REMOTE_ADDR"]
+      ));
+
+      if (count($results2) === 0){
+        throw new \Exception("Não foi possível recuperar a senha.")
+      }else{
+        $dataRecovery = $results2[0];
+      }
+    }
   }
 }
 

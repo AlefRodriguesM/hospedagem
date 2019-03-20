@@ -24,6 +24,10 @@
               <label for="DS_LOGIN">Usuário</label>
               <input type="text" class="form-control" id="DS_LOGIN" name="DS_LOGIN" placeholder="Usuário.."  value="<?php echo htmlspecialchars( $user["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
+              <div class="form-group">
+                <label for="DS_EMAIL">E-Mail</label>
+                <input type="text" class="form-control" id="DS_EMAIL" name="DS_EMAIL" placeholder="E-Mail.."  value="<?php echo htmlspecialchars( $user["DS_EMAIL"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox" name="TG_ADMIN" value="1" <?php if( $user["TG_ADMIN"] == 1 ){ ?>checked<?php } ?>> Acesso de administrador
