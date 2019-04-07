@@ -32,8 +32,17 @@ class Sql{
     $stmt->execute();
   }
 
-  public function select($rawQuery, $params = array()){
+  public function select($rawQuery, $params = array(), $debug = 0){
+    if($debug === 1){
+      echo json_encode($rawQuery);
+      echo '<br>'.json_encode($params);
+    }
+
     $stmt = $this->conn->prepare($rawQuery);
+
+    if($debug === 2){
+      echo json_encode($stmt);
+    }
 
     $this->setParams($stmt, $params);
 
