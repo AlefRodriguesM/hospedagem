@@ -1,5 +1,7 @@
 <?php
 //PHP Version 5.6.38
+//var_dump();
+//json_encode();
 session_start();
 require_once('vendor/autoload.php');
 
@@ -22,9 +24,13 @@ $app->get('/', function(){
 $app->get('/admin', function(){
   User::verifyLogin();
 
+  $user = new User();
+
+  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
+
   $page = new PageAdmin();
 
-  $page->setTpl('index');
+  $page->setTpl('index', array("user"=>$user->getValues()));
 });
 
 $app->get('/admin/login', function(){
