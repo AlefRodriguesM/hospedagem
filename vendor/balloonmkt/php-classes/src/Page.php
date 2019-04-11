@@ -3,7 +3,7 @@
 namespace Balloonmkt;
 
 use Rain\Tpl;
-
+use  \Balloonmkt\Model\User;
 class Page{
   private $tpl;
   private $options = [];
@@ -14,6 +14,12 @@ class Page{
   ];
 
   public function __construct($opts = array(), $tpl_dir = "/views/"){
+
+  $user = new User();
+
+  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
+  echo json_encode($user);
+  exit;
     $this->options = array_merge($this->defaults, $opts);
 
     $config = array(
@@ -26,7 +32,7 @@ class Page{
 
     $this->tpl = new Tpl;
 
-    $this->setData($this->options["data"]);
+    $this->setData($this->options);
 
     if($this->options["header"] === true) $this->tpl->draw("header");
   }

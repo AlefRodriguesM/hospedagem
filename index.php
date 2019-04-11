@@ -28,7 +28,7 @@ $app->get('/admin', function(){
 
   $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
 
-  $page = new PageAdmin();
+  $page = new PageAdmin(array("data"=>$user->getValues()));
 
   $page->setTpl('index', array("user"=>$user->getValues()));
 });
