@@ -27,6 +27,7 @@
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
+                    <th style="width: 20px">#</th>
                     <th>Usuário</th>
                     <th>E-Mail</th>
                     <th style="width: 60px">Administrador</th>
@@ -39,6 +40,7 @@
                   {loop="$users"}
                   <tr>
                     <td>{$value.PK_ID}</td>
+                    <td><img src="/res/img/wifi.jpg" ></img></td>
                     <td>{$value.DS_LOGIN}</td>
                     <td>{$value.DS_EMAIL}</td>
                     <td>{if="$value.TG_ADMIN == 1"}Sim{else}Não{/if}</td>

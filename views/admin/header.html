@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="/res/admin/dist/css/skins/skin-blue.min.css">
 
+  <link rel="stylesheet" href="/res/css/geral.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -62,7 +64,7 @@ desired effect
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Balloon Hosp.</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -79,7 +81,7 @@ desired effect
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
+              <span class="label label-success">{$data.TG_ADMIN}</span>
             </a>
             <ul class="dropdown-menu">
               <li class="header">You have 4 messages</li>
@@ -176,17 +178,14 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="/res/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{$data.DS_LOGIN}</span>
+              <span class="hidden-xs fUpper">{$data.DS_LOGIN}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="/res/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
+                <p class="fUpper">{$data.DS_LOGIN}</p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
@@ -234,41 +233,52 @@ desired effect
           <img src="/res/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{$data.DS_LOGIN}</p>
+          <p class="fUpper">{$data.DS_LOGIN}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#">Alguma desc.</a>
         </div>
       </div>
 
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+          <a href="#"><i class="fa fa-users"></i> <span>Cadastros</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li class="active"><a href="/admin/users"><i class="fa"></i> <span>Usuários</span></a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-bars"></i> <span>Relatórios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          </ul>
+        </li>
+        <!--
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-minus"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-plus"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-times"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-envelope"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-clock-o"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-bell"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-flag-o"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-bars"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-circle"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-search"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-angle-left"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-star-o"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-comments-o"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-comments"></i> <span>Another Link</span></a></li>
+        <li><a href="#"><i class="fa fa-refresh"></i> <span>Another Link</span></a></li>
+      -->
       </ul>
       <!-- /.sidebar-menu -->
     </section>

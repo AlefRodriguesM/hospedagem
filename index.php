@@ -61,9 +61,13 @@ $app->get('/admin/logout', function(){
 $app->get('/admin/users', function(){
   User::verifyLogin();
 
-  $users = User::listAll();
+  $user = new User();
 
-  $page = new PageAdmin();
+  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
+
+  $page = new PageAdmin(array("data"=>$user->getValues()));
+
+  $users = User::listAll();
 
   $page->setTpl('users', array('users'=>$users));
 });
@@ -71,7 +75,11 @@ $app->get('/admin/users', function(){
 $app->get('/admin/users/create', function(){
   User::verifyLogin();
 
-  $page = new PageAdmin();
+  $user = new User();
+
+  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
+
+  $page = new PageAdmin(array("data"=>$user->getValues()));
 
   $page->setTpl('users-create');
 });
@@ -97,7 +105,7 @@ $app->get('/admin/users/:PK_ID', function($PK_ID){
 
   $user->get((int)$PK_ID);
 
-  $page = new PageAdmin();
+  $page = new PageAdmin(array("data"=>$user->getValues()));
 
   $page->setTpl('users-update', array("user"=>$user->getValues()));
 });

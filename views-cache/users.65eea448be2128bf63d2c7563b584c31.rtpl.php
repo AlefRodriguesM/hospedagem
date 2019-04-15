@@ -27,6 +27,7 @@
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
+                    <th style="width: 20px">#</th>
                     <th>Usuário</th>
                     <th>E-Mail</th>
                     <th style="width: 60px">Administrador</th>
@@ -39,6 +40,7 @@
                   <?php $counter1=-1;  if( isset($users) && ( is_array($users) || $users instanceof Traversable ) && sizeof($users) ) foreach( $users as $key1 => $value1 ){ $counter1++; ?>
                   <tr>
                     <td><?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <td><img src="C:\xampp\htdocs\hospedagem\res\img\wifi.png" class="img-fluid"></img></td>
                     <td><?php echo htmlspecialchars( $value1["DS_LOGIN"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["DS_EMAIL"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php if( $value1["TG_ADMIN"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>

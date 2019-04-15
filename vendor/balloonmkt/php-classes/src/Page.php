@@ -3,7 +3,7 @@
 namespace Balloonmkt;
 
 use Rain\Tpl;
-use  \Balloonmkt\Model\User;
+//use  \Balloonmkt\Model\User;
 class Page{
   private $tpl;
   private $options = [];
@@ -15,26 +15,26 @@ class Page{
 
   public function __construct($opts = array(), $tpl_dir = "/views/"){
 
-  $user = new User();
+  //$user = new User();
+  //echo (int)$_SESSION[User::SESSION]["PK_ID"];
+  //exit;
+  //$user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
 
-  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
-  echo json_encode($user);
-  exit;
-    $this->options = array_merge($this->defaults, $opts);
+  $this->options = array_merge($this->defaults, $opts);
 
-    $config = array(
-      "tpl_dir"    => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,
-      "cache_dir"  => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
-      "debug"      => false
-    );
+  $config = array(
+    "tpl_dir"    => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,
+    "cache_dir"  => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
+    "debug"      => false
+  );
 
-    Tpl::configure($config);
+  Tpl::configure($config);
 
-    $this->tpl = new Tpl;
+  $this->tpl = new Tpl;
 
-    $this->setData($this->options);
+  $this->setData($this->options);
 
-    if($this->options["header"] === true) $this->tpl->draw("header");
+  if($this->options["header"] === true) $this->tpl->draw("header");
   }
 
   private function setData($data = array()){
