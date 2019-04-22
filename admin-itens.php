@@ -1,24 +1,26 @@
 <?php
--- PAREI MODIFICANDO AQUI
+
 use \Balloonmkt\PageAdmin;
 use \Balloonmkt\DB\Sql;
+use \Balloonmkt\Model\User;
 use \Balloonmkt\Model\Item;
 
 $app->get('/admin/itens', function(){
   User::verifyLogin();
 
-  $user = new Item();
+  $user = new User();
+  $item = new Item();
 
   $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
 
   $page = new PageAdmin(array("data"=>$user->getValues()));
 
-  $users = User::listAll();
+  $itens = Item::listAll();
 
-  $page->setTpl('itens', array('users'=>$users));
+  $page->setTpl('itens', array('itens'=>$itens));
 });
 
-$app->get('/admin/users/create', function(){
+$app->get('/admin/itens/create', function(){
   User::verifyLogin();
 
   $user = new User();
@@ -27,69 +29,63 @@ $app->get('/admin/users/create', function(){
 
   $page = new PageAdmin(array("data"=>$user->getValues()));
 
-  $page->setTpl('users-create');
+  $page->setTpl('itens-create');
 });
 
-$app->get('/admin/users/:PK_ID/delete', function($PK_ID){
+$app->get('/admin/itens/:PK_ID/delete', function($PK_ID){
   User::verifyLogin();
 
-  $user = new User();
+  $item = new Item();
 
-  $user->get((int)$PK_ID);
+  $item->get((int)$PK_ID);
 
-  $user->delete();
+  $item->delete();
 
-  header('Location: /admin/users');
+  header('Location: /admin/itens');
 
   exit;
 });
 
-$app->get('/admin/users/:PK_ID', function($PK_ID){
+$app->get('/admin/itens/:PK_ID', function($PK_ID){
   User::verifyLogin();
 
   $user = new User();
+  $item = new Item();
 
-  $user->get((int)$PK_ID);
+  $user->get((int)$_SESSION[User::SESSION]["PK_ID"]);
+  $item->get((int)$PK_ID);
 
   $page = new PageAdmin(array("data"=>$user->getValues()));
 
-  $page->setTpl('users-update', array("user"=>$user->getValues()));
+  $page->setTpl('itens-update', array("item"=>$item->getValues()));
 });
 
-$app->post('/admin/users/create', function(){
+$app->post('/admin/itens/create', function(){
   User::verifyLogin();
 
-  $user = new User();
+  $item = new Item();
 
-  $_POST['TG_ADMIN'] = (isset($_POST['TG_ADMIN']))?1:0;
+  $item->setData($_POST);
 
-  $_POST['DS_PASSWORD'] = password_hash($_POST['DS_PASSWORD'], PASSWORD_DEFAULT, [
- 		"cost"=>12
- 	]);
+  $item->save();
 
-  $user->setData($_POST);
-
-  $user->save();
-
-  header('Location: /admin/users');
+  header('Location: /admin/itens');
 
   exit;
 });
 
-$app->post('/admin/users/:PK_ID', function($PK_ID){
+$app->post('/admin/itens/:PK_ID', function($PK_ID){
   User::verifyLogin();
 
-  $user = new User();
+  $item = new Item();
 
-  $_POST['TG_ADMIN'] = (isset($_POST['TG_ADMIN']))?1:0;
+  $item->get((int)$PK_ID);
 
-  $user->get((int)$PK_ID);
+  $item->setData($_POST);
 
-  $user->setData($_POST);
+  $item->update();
 
-  $user->update();
-
-  header('Location: /admin/users');
+  header('Location: /admin/itens');
 
   exit;
 });

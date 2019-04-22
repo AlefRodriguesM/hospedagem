@@ -7,6 +7,12 @@ use \Balloonmkt\DB\Sql;
 use \Balloonmkt\Mailer;
 
 class Item extends Model{
+  public static function listAll(){
+    $sql = new Sql();
+
+    return $sql->select("SELECT * FROM tb_itens");
+  }
+
   public function save(){
     $sql = new Sql();
 

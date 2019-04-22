@@ -250,6 +250,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="/admin/users"><i class="fa"></i> <span>Usuários</span></a></li>
+            <li class="active"><a href="/admin/itens"><i class="fa"></i> <span>Itens</span></a></li>
           </ul>
         </li>
         <li class="treeview">
