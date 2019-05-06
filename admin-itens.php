@@ -32,14 +32,16 @@ $app->get('/admin/itens/create', function(){
   $page->setTpl('itens-create');
 });
 
-$app->get('/admin/itens/:PK_ID/delete', function($PK_ID){
+$app->post('/admin/itens/create', function(){
   User::verifyLogin();
 
   $item = new Item();
 
-  $item->get((int)$PK_ID);
+  $item->setData($_POST);
 
-  $item->delete();
+  $item->save();
+
+  $item->setPhoto($_FILES["file"]);
 
   header('Location: /admin/itens');
 
@@ -60,20 +62,6 @@ $app->get('/admin/itens/:PK_ID', function($PK_ID){
   $page->setTpl('itens-update', array("item"=>$item->getValues()));
 });
 
-$app->post('/admin/itens/create', function(){
-  User::verifyLogin();
-
-  $item = new Item();
-
-  $item->setData($_POST);
-
-  $item->save();
-
-  header('Location: /admin/itens');
-
-  exit;
-});
-
 $app->post('/admin/itens/:PK_ID', function($PK_ID){
   User::verifyLogin();
 
@@ -84,6 +72,22 @@ $app->post('/admin/itens/:PK_ID', function($PK_ID){
   $item->setData($_POST);
 
   $item->update();
+
+  $item->setPhoto($_FILES["file"]);
+
+  header('Location: /admin/itens');
+
+  exit;
+});
+
+$app->get('/admin/itens/:PK_ID/delete', function($PK_ID){
+  User::verifyLogin();
+
+  $item = new Item();
+
+  $item->get((int)$PK_ID);
+
+  $item->delete();
 
   header('Location: /admin/itens');
 

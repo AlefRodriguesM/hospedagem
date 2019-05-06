@@ -39,7 +39,7 @@
                   {loop="$itens"}
                   <tr>
                     <td>{$value.PK_ID}</td>
-                    <td><img src="/res/img/wifi.png"></img></td>
+                    <td><img src="../res/admin/img/itens/{$value.PK_ID}.png"></img></td>
                     <td>{$value.DS_NOME}</td>
                     <td>{$value.DS_DESCRICAO}</td>
                     <td>{if="$value.TG_INATIVO == 1"}Sim{else}Não{/if}</td>

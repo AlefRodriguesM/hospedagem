@@ -39,7 +39,7 @@
                   <?php $counter1=-1;  if( isset($itens) && ( is_array($itens) || $itens instanceof Traversable ) && sizeof($itens) ) foreach( $itens as $key1 => $value1 ){ $counter1++; ?>
                   <tr>
                     <td><?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                    <td><img src="/res/img/wifi.png"></img></td>
+                    <td><img src="../res/admin/img/itens/<?php echo htmlspecialchars( $value1["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>.png"></img></td>
                     <td><?php echo htmlspecialchars( $value1["DS_NOME"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["DS_DESCRICAO"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php if( $value1["TG_INATIVO"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>

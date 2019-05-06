@@ -23,16 +23,25 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/itens/create" method="post">
+        <form role="form" action="/admin/itens/create" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="DS_NOME">Nome</label>
               <input type="text" class="form-control" id="DS_NOME" name="DS_NOME" placeholder="Nome..">
             </div>
-              <div class="form-group">
-                <label for="DS_DESCRICAO">Descrição</label>
-                <input type="text" class="form-control" id="DS_DESCRICAO" name="DS_DESCRICAO" placeholder="Descrição..">
+            <div class="form-group">
+              <label for="DS_DESCRICAO">Descrição</label>
+              <input type="text" class="form-control" id="DS_DESCRICAO" name="DS_DESCRICAO" placeholder="Descrição..">
+            </div>
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file" value="$item.DS_FOTO">
+              <div class="box box-widget">
+                <div class="box-body">
+                  <img class="img-responsive" id="image-preview" src="../../res/admin/img/itens/default.png" alt="Photo">
+                </div>
               </div>
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

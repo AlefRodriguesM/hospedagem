@@ -3,13 +3,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de itens
+    Lista de Itens
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i>Início</a></li>
-    <li><a href="/admin/itens">Itens</a></li>
-    <li class="active"><a href="/admin/itens/create">Cadastrar</a></li>
-  </ol>
 </section>
 
 <!-- Main content -->
@@ -17,35 +12,35 @@
 
   <div class="row">
   	<div class="col-md-12">
-  		<div class="box box-success">
+  		<div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Novo item</h3>
+          <h3 class="box-title">Editar item</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/itens/create" method="post" enctype="multipart/form-data">
+        <form role="form" action="/admin/itens/<?php echo htmlspecialchars( $item["PK_ID"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="DS_NOME">Nome</label>
-              <input type="text" class="form-control" id="DS_NOME" name="DS_NOME" placeholder="Nome..">
+              <input type="text" class="form-control" id="DS_NOME" name="DS_NOME" placeholder="Nome.."  value="<?php echo htmlspecialchars( $item["DS_NOME"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="DS_DESCRICAO">Descrição</label>
-              <input type="text" class="form-control" id="DS_DESCRICAO" name="DS_DESCRICAO" placeholder="Descrição..">
+              <input type="text" class="form-control" id="DS_DESCRICAO" name="DS_DESCRICAO" placeholder="Descrição.."  value="<?php echo htmlspecialchars( $item["DS_DESCRICAO"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="file">Foto</label>
               <input type="file" class="form-control" id="file" name="file" value="$item.DS_FOTO">
               <div class="box box-widget">
                 <div class="box-body">
-                  <img class="img-responsive" id="image-preview" src="../../res/admin/img/itens/default.png" alt="Photo">
+                  <img class="img-responsive" id="image-preview" src="<?php echo htmlspecialchars( $item["DS_FOTO"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Photo">
                 </div>
               </div>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </form>
       </div>

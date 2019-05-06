@@ -53,6 +53,65 @@ class Item extends Model{
       ":PK_ID"=>$this->getPK_ID()
     ));
   }
+
+  public function checkPhoto(){
+    if(file_exists(
+      $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
+      'res' . DIRECTORY_SEPARATOR .
+      'admin' . DIRECTORY_SEPARATOR .
+      'img' . DIRECTORY_SEPARATOR .
+      'itens' . DIRECTORY_SEPARATOR .
+      $this->getPK_ID() . '.png'
+    )){
+      $url = '/res/admin/img/itens/' . $this->getPK_ID() . '.png';
+    }else{
+      $url = '/res/admin/img/itens/default.png';
+    };
+    
+    return $this->setDS_FOTO($url);
+  }
+
+  public function getValues(){
+    $this->checkPhoto();
+
+    $values = parent::getValues();
+
+    return $values;
+  }
+
+  public function setPhoto($file){
+    $extension = explode('.', $file['name']);
+
+    $extension = end($extension);
+
+    switch($extension){
+      case 'jpg':
+      case 'jpeg':
+      $image = imagecreatefromjpeg($file['tmp_name']);
+      break;
+
+      case 'gif';
+      $image = imagecreatefromgif($file['tmp_name']);
+      break;
+
+      case 'png';
+      $image = imagecreatefrompng($file['tmp_name']);
+      break;
+    }
+
+    $dir = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
+      'res' . DIRECTORY_SEPARATOR .
+      'admin' . DIRECTORY_SEPARATOR .
+      'img' . DIRECTORY_SEPARATOR .
+      'itens' . DIRECTORY_SEPARATOR .
+      $this->getPK_ID() . '.png';
+
+    imagepng($image, $dir);
+
+    imagedestroy($image);
+
+    $this->checkPhoto();
+  }
 }
 
 ?>
