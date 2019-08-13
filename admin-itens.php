@@ -41,7 +41,9 @@ $app->post('/admin/itens/create', function(){
 
   $item->save();
 
-  $item->setPhoto($_FILES["file"]);
+  if($_FILES["file"]["name"] !== ""){
+    $item->setPhoto($_FILES['file']);
+  }
 
   header('Location: /admin/itens');
 
@@ -73,7 +75,9 @@ $app->post('/admin/itens/:PK_ID', function($PK_ID){
 
   $item->update();
 
-  $item->setPhoto($_FILES["file"]);
+  if($_FILES["file"]["name"] !== ""){
+    $item->setPhoto($_FILES["file"]);
+  }
 
   header('Location: /admin/itens');
 

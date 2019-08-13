@@ -67,7 +67,7 @@ class Item extends Model{
     }else{
       $url = '/res/admin/img/itens/default.png';
     };
-    
+
     return $this->setDS_FOTO($url);
   }
 
@@ -84,29 +84,33 @@ class Item extends Model{
 
     $extension = end($extension);
 
-    switch($extension){
-      case 'jpg':
-      case 'jpeg':
-      $image = imagecreatefromjpeg($file['tmp_name']);
-      break;
-
-      case 'gif';
-      $image = imagecreatefromgif($file['tmp_name']);
-      break;
-
-      case 'png';
-      $image = imagecreatefrompng($file['tmp_name']);
-      break;
-    }
-
     $dir = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
       'res' . DIRECTORY_SEPARATOR .
       'admin' . DIRECTORY_SEPARATOR .
       'img' . DIRECTORY_SEPARATOR .
       'itens' . DIRECTORY_SEPARATOR .
-      $this->getPK_ID() . '.png';
+      $this->getPK_ID();
 
-    imagepng($image, $dir);
+    switch($extension){
+      case 'jpg':
+      case 'jpeg':
+      $image = imagecreatefromjpeg($file['tmp_name']);
+      $dir = $dir . '.jpg';
+      imagejpeg($image, $dir);
+      break;
+
+      case 'gif';
+      $image = imagecreatefromgif($file['tmp_name']);
+      $dir = $dir . '.png';
+      imagegif($image, $dir);
+      break;
+
+      case 'png';
+      $image = imagecreatefrompng($file['tmp_name']);
+      $dir = $dir . '.png';
+      imagepng($image, $dir);
+      break;
+    }
 
     imagedestroy($image);
 

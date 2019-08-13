@@ -253,6 +253,7 @@ desired effect
             <li class="active"><a href="/admin/itens"><i class="fa"></i> <span>Itens</span></a></li>
           </ul>
         </li>
+        
         <li class="treeview">
           <a href="#"><i class="fa fa-bars"></i> <span>Relatórios</span>
             <span class="pull-right-container">
