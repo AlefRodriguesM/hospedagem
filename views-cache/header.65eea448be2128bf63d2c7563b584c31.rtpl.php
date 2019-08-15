@@ -62,7 +62,7 @@ desired effect
     <!-- Logo -->
     <a href="/../admin" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>BALN</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Balloon Hosp.</b></span>
     </a>
@@ -251,9 +251,10 @@ desired effect
           <ul class="treeview-menu">
             <li class="active"><a href="/admin/users"><i class="fa"></i> <span>Usuários</span></a></li>
             <li class="active"><a href="/admin/itens"><i class="fa"></i> <span>Itens</span></a></li>
+            <li class="active"><a href="/admin/quartos"><i class="fa"></i> <span>Quartos</span></a></li>
           </ul>
         </li>
-        
+
         <li class="treeview">
           <a href="#"><i class="fa fa-bars"></i> <span>Relatórios</span>
             <span class="pull-right-container">

@@ -1,0 +1,53 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Lista de Quartos
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar quarto</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" action="/admin/quartos/{$quarto.PK_ID}" method="post" enctype="multipart/form-data">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="DS_NOME">Nome</label>
+              <input type="text" class="form-control" id="DS_NOME" name="DS_NOME" placeholder="Nome.."  value="{$quarto.DS_NOME}">
+            </div>
+            <div class="form-group">
+              <label for="DS_DESCRICAO">Descrição</label>
+              <input type="text" class="form-control" id="DS_DESCRICAO" name="DS_DESCRICAO" placeholder="Descrição.."  value="{$quarto.DS_DESCRICAO}">
+            </div>
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file" value="$quarto.DS_FOTO">
+              <div class="box box-widget">
+                <div class="box-body">
+                  <img class="img-responsive" id="image-preview" src="{$quarto.DS_FOTO}" alt="Photo">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+  	</div>
+  </div>
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

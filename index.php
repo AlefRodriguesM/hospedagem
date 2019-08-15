@@ -21,6 +21,7 @@ require_once('admin.php');
 require_once('admin-forgot.php');
 require_once('admin-users.php');
 require_once('admin-itens.php');
+require_once('admin-quartos.php');
 
 $app->run();
 
